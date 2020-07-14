@@ -1,0 +1,22 @@
+
+<div #popupid id="popupid" class="modal">
+    <span (click)="hidPopup()" class="close" title="Close Modal">×</span>
+    <div class="centered">
+      <form class="modal-content" >
+        <div class="container">
+          <h1 *ngIf="this.popupDetails?.popupType=='inputType'">Enter Text</h1>
+           <h1 *ngIf="this.popupDetails?.popupType=='confirm'">Are you sure you want to delete ?</h1>
+          <!-- <p>Are you sure you want to delete ?</p> -->
+             <input type="text" [(ngModel)]="listName" name="title"
+              *ngIf="this.popupDetails?.popupType=='inputType'">
+        
+          <div class="clearfix">
+            <button type="button" (click)="cancel()" class="cancelbtn">Cancel</button>
+            <button type="button" (click)="ok()" class="deletebtn">Ok</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    
+  </div>
+

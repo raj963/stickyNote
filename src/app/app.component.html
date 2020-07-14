@@ -1,0 +1,22 @@
+
+<div>
+<span href="javascript:;" (click)="addNote()" class="button" id="add_new">Add New Note</span>
+
+<span  class="" id="add_new">Change theme</span>
+<select name="selectedQuantity" id="aantal" class="form-control" [(ngModel)]="selectedQuantity"  #mySelect
+(change)="changeTheam($event,mySelect)">
+  <option *ngFor="let option of options" [value]="option.value" >{{option.label}}</option>
+</select>
+<div class="flex-container">
+  <div *ngFor="let note of notes">
+    <app-note [noteId]="note" (closeNote)="closeNote($event)" (editNoteTitle)="editNoteTitle($event)" ></app-note>
+ 
+  </div>  
+</div>
+
+
+
+
+</div>
+
+<app-popup [showPopup]="showPopup"  (setTitle)="setTitle($event)"></app-popup>

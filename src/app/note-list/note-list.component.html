@@ -1,0 +1,10 @@
+<div class="dropLocation" id="div1" (drop)="drop($event)" (dragover)="allowDrop($event)"
+(dragend)="dragend($event)">
+    <ul style="list-style-type:square"  >
+    <li *ngFor="let note of notesList"
+    draggable="true" (dragstart)="drag($event)">
+    {{note}} <span class="close" (click)="removeItem(note)">&times;</span>
+    </li>
+
+</ul>
+</div>

@@ -1,0 +1,28 @@
+<div class="note"> <a href="javascript:;" class="button remove" (click)="remove()">X</a>
+    <div class="note_cnt">
+        <textarea class="title" placeholder="Enter note title" (dblclick)="editTitle()" [readonly]="isTitleReadOnly"
+            (keydown.enter)="editTitle();" [title]="title" [(ngModel)]="hadder"></textarea>
+        <div class="dropLocation" id="div1" (drop)="drop($event)" (dragover)="allowDrop($event)"
+            (dragend)="dragend($event)">
+            <ul class="scrollUl" style="list-style-type:square">
+                <li *ngFor="let note of notesList" draggable="true" (dragstart)="drag($event)" [title]="title"
+                (dblclick)="editNoteList(note,$event)"  >
+                    {{note}} <span class="close" (click)="removeItem(note)">&times;</span>
+                </li>
+
+            </ul>
+        </div>
+        <div [ngStyle]="noteStyle">
+           <div class="close-cross"> <span  (click)="addItemHide($event)">&times;</span></div>
+           <div class="close-cross check"><span  (click)="addItem($event)">&#10003;</span></div>
+            
+            <textarea #notetext class="cnt" placeholder="Enter note  here" ></textarea>
+
+        </div>
+        <div class="toolbar" id="toolbar" tabindex="0">
+            <button class="add material-icons" (click)="addItemDisplay()">
+                Add a card
+            </button>
+        </div>
+    </div>
+</div>
