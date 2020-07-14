@@ -43,7 +43,7 @@ export class NoteComponent implements OnInit {
 * @returns {void}
 */
 
-  addItem(ev): void {
+  addItem(ev?): void {
     if(ev){
       ev.stopPropagation();
     }
