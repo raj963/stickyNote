@@ -47,9 +47,10 @@ export class NoteComponent implements OnInit {
     if(ev){
       ev.stopPropagation();
     }
+
     let value = this.noteText.nativeElement.value
 
-    value.trim() && !this.notesList.includes(value) ? this.notesList.push(value) : ''
+    value.trim() && !this.notesList.includes(value) ? this.notesList.push(value) : alert('item already exists')
 
     this.addItemHide()
   }
