@@ -10,9 +10,10 @@ import { ThrowStmt } from '@angular/compiler';
 })
 export class PopupComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
 
-  popupDetails: any;
+  
   getServicepopup: Subscription;
   getConfirmServicepopup: Subscription;
+  popupDetails: any;
 
   constructor(private popupService: PopupService) { }
 
@@ -112,23 +113,32 @@ export class PopupComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
 
   ok() {
     if (this.popupDetails?.popupType == 'inputType') {
-      var text = this.listName;
-      if (text.trim()) {
-        // handling of input box
-        let previousVal = this.popupDetails?.noteId
-        let result = this.popupDetails.onSuccess(text, previousVal)
-
-        if (result) {
-          var modal = this.hidePopup();
-        }
-      } else {
-        alert('please enter valid value')
-      }
+      this.inputBanHandler();
     } else {
       // handling of confimation box
-      let result = this.popupDetails.onSuccess()
-      this.hidePopup();
-      return true
+      return this.confirmBoxHandler();
+    }
+  }
+
+  private confirmBoxHandler() {
+    let result = this.popupDetails.onSuccess();
+    this.hidePopup();
+    return true;
+  }
+
+  private inputBanHandler() {
+    var text = this.listName;
+    if (text.trim()) {
+      // handling of input box
+      let previousVal = this.popupDetails?.noteId;
+      let result = this.popupDetails.onSuccess(text, previousVal);
+
+      if (result) {
+        var modal = this.hidePopup();
+      }
+    }
+    else {
+      alert('please enter valid value');
     }
   }
 

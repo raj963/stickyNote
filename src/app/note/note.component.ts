@@ -30,7 +30,7 @@ export class NoteComponent implements OnInit {
   ngOnInit(): void {
     this.noteStyle = { 'display': 'none', 'margin-top': '40px' }
 
-    this.notesList = ['Coffee', 'Tea', 'Milk']
+    this.notesList = []
     this.title = 'double Click for edit'
     this.isTitleReadOnly = true
 
@@ -47,7 +47,6 @@ export class NoteComponent implements OnInit {
     if(ev){
       ev.stopPropagation();
     }
-
     let value = this.noteText.nativeElement.value
 
     value.trim() && !this.notesList.includes(value) ? this.notesList.push(value) : alert('item already exists')
@@ -75,7 +74,7 @@ export class NoteComponent implements OnInit {
       let index = this.notesList.indexOf(item)
       return this.notesList.splice(index, 1)
     }
-    let obj = {
+     let obj = {
       popupType: 'confirm',
       onSuccess: removeEle,
       onCancel: () => { },

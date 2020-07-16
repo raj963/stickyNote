@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { PopupService } from './popup.service';
+import { exit } from 'process';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +26,7 @@ export class AppComponent implements OnInit {
 
   }
 
-    /**
+  /**
 * add new Note call
 * @param {addNote()} 
 * @returns {void}
@@ -47,7 +48,7 @@ export class AppComponent implements OnInit {
   }
 
 
-     /**
+  /**
 * remove existing Note call
 * @param {closeNote()} 
 * @returns {void}
@@ -72,7 +73,7 @@ export class AppComponent implements OnInit {
   }
 
 
-      /**
+  /**
 * edit existing Note call
 * @param {editNoteTitle(id)} 
 * @returns {void}
@@ -90,27 +91,41 @@ export class AppComponent implements OnInit {
     this.popupService.showPopup(obj)
   }
 
- 
-  setTitle(title, previousVal?) {
+
+  setTitle(title, previousVal?): boolean {
 
     let result = false;
-    if (!this.notes.includes(title) && !previousVal) {
+
+    let matchFount = false
+    for (let index = 0; index < this.notes.length; index++) {
+      const element = this.notes[index].toLowerCase();
+      if (element == title.toLowerCase()) {
+        matchFount = true
+        break;
+      }
+
+    }
+
+    if (!matchFount && !previousVal) {
       this.notes.push(title);
       result = true;
-    } else if (previousVal) {
+    } else if (previousVal  ) {
 
-      let id = this.notes.indexOf(previousVal);
-      this.notes[id] = title;
-
-      result = true;
-    } else {
-      result = false;
+      if(!matchFount){
+        let id = this.notes.indexOf(previousVal);
+        this.notes[id] = title;
+        result = true;
+      }else{
+        alert('please enter some unique value')
+      }
+    } else{
+      alert('please enter some unique value')
     }
     return result;
   }
 
 
-      /**
+  /**
 * change application theam
 * @param {changeTheam(event, element)} 
 * @returns {void}
