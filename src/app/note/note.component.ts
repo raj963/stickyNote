@@ -96,6 +96,11 @@ export class NoteComponent implements OnInit {
  */
   addItemDisplay() {
     this.noteStyle['display'] = 'block';
+     
+    setTimeout(() => {
+      this.noteText.nativeElement.focus()
+    }, 5);
+   
 
   }
 
@@ -210,7 +215,7 @@ export class NoteComponent implements OnInit {
 */
   editNoteList(note, ev) {
 
-    this.addItem()
+    // this.addItem()
 
     let updateList = (text, previousText) => {
       let index = this.notesList.indexOf(previousText);

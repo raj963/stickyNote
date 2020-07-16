@@ -85,7 +85,7 @@ export class NoteListComponent implements OnInit {
     if ((this.dragValueId || this.dragValueId == 0) && ev.dataTransfer.dropEffect == 'move' && this.validForItemRemove) {
       this.notesList.splice(this.dragValueId, 1)
     }
-    debugger
+     
 
   }
 

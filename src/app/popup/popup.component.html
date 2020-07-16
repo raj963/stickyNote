@@ -8,11 +8,11 @@
            <h1 *ngIf="this.popupDetails?.popupType=='confirm'">Are you sure you want to delete ?</h1>
           <!-- <p>Are you sure you want to delete ?</p> -->
              <input type="text" [(ngModel)]="listName" name="title"
-              *ngIf="this.popupDetails?.popupType=='inputType'">
+              *ngIf="this.popupDetails?.popupType=='inputType'" autofocus tabindex="1">
         
           <div class="clearfix">
-            <button type="button" (click)="cancel()" class="cancelbtn">Cancel</button>
-            <button type="button" (click)="ok()" class="deletebtn">Ok</button>
+            <button type="button" (click)="cancel()" class="cancelbtn" tabindex="3">Cancel</button>
+            <button type="button" (click)="ok()" class="deletebtn" tabindex="2">Ok</button>
           </div>
         </div>
       </form>
