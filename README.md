@@ -2,6 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
 
+Project Url http://stickynote3.s3-website.ap-south-1.amazonaws.com/
+
 
 
 ## Development server
